@@ -1,2 +1,4 @@
 Private.h
 *.o
+*.swp
+Old/

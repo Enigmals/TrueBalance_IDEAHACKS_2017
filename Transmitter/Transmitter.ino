@@ -20,6 +20,11 @@ void setup() {
   Serial.begin(9600);
   accel.begin();
 
+  // Configure accel to 16gs
+  //byte accelSensitivityReg = accel.read8(LSM303_ADDRESS_ACCEL, LSM303_REGISTER_ACCEL_CTRL_REG4_A);
+  //accelSensitivityReg = ((accelSensitivityReg & B11001001) | B00000000);
+  //accel.write8(LSM303_ADDRESS_ACCEL, LSM303_REGISTER_ACCEL_CTRL_REG4_A, accelSensitivityReg);
+
   while ( status != WL_CONNECTED) {
     Serial.print("Attempting to connect to WPA SSID: ");
     Serial.println(ssid);
@@ -32,7 +37,7 @@ void setup() {
 
   displaySensorDetails();
 
-  while (!client.connect(server, 80))
+  while (!client.connect(server, 82))
   {
 	  Serial.println("Client Failed to connect");
     delay(10);
@@ -46,7 +51,10 @@ void loop() {
   accel.getEvent(&event);
   Serial.println("Transmitting.");
   
-  sendUpdate(String(event.acceleration.x) + " " + String(event.acceleration.y) + " " + String(event.acceleration.z));
+  sendUpdate(String(event.acceleration.x) + " " + 
+             String(event.acceleration.y) + " " + 
+             String(event.acceleration.z) + " " +
+             String(millis()));
 
   delay(10);
 }
