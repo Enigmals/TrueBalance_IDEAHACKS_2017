@@ -9,11 +9,13 @@ vectorDataR = []
 timeDataR = []
 startTimeR = 0
 
+DataFolder = 'Data/'
+
 # Reading in Left Data
-with open('vectorDataL.txt', 'r') as f:
+with open(DataFolder + 'vectorDataL.txt', 'r') as f:
     startTimeL = float(f.readline())
     vectorDataL = [float(line.rstrip('\n')) for line in f]
-with open('timeDataL.txt', 'r') as f:
+with open(DataFolder + 'timeDataL.txt', 'r') as f:
     timeDataL = [float(line.rstrip('\n'))/1000 for line in f]
 offset = timeDataL[0]
 count = 0
@@ -22,10 +24,10 @@ for t in timeDataL:
     count = count + 1
 
 # Reading in Right Data    
-with open('vectorDataR.txt', 'r') as f:
+with open(DataFolder + 'vectorDataR.txt', 'r') as f:
     startTimeR = float(f.readline())
     vectorDataR = [float(line.rstrip('\n')) for line in f]
-with open('timeDataR.txt', 'r') as f:
+with open(DataFolder + 'timeDataR.txt', 'r') as f:
     timeDataR = [float(line.rstrip('\n'))/1000 for line in f]
 
 offset = timeDataR[0]

@@ -11,6 +11,8 @@ sock.bind(server_address)
 # Listen for incoming connections
 sock.listen(1)
 
+DataFolder = 'Data/'
+
 lineBuffer = ""
 count = 0
 
@@ -62,11 +64,11 @@ try:
 except Exception as e:
     print('exiting: ' + e.message)
 finally:
-    with open('vectorDataL.txt', 'w') as f:
+    with open(DataFolder + 'vectorDataL.txt', 'w') as f:
         f.write(str(startTime) + '\n')
         for s in vectorData:
             f.write(str(s) + '\n')
-    with open('timeDataL.txt', 'w') as f:
+    with open(DataFolder + 'timeDataL.txt', 'w') as f:
         for s in timeData:
             f.write(str(s) + '\n')
 
